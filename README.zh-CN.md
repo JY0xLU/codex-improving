@@ -125,15 +125,6 @@ codex-improving/
     └── dream-consolidate/
 ```
 
-## v1 不做什么
-
-这些能力刻意放到后续版本：
-
-- 多 subagent 并行 consolidation
-- 自动生成 skill draft
-- 自动切换 global / repo-local / custom `CODEX_HOME`
-- plugin 化封装
-
 ## 快速上手
 
 1. 把 `skills/capture-memory/` 和 `skills/dream-consolidate/` 复制到 `$CODEX_HOME/skills/` 或 `~/.codex/skills/`，让 Codex 能发现它们
@@ -142,18 +133,3 @@ codex-improving/
 4. 白天用 `capture-memory`
 5. 夜间用 `dream-consolidate`
 6. 先 review nightly report，再信任升级结果
-
-## 与旧版 Skill 的关系
-
-更早的 `self-improving-for-codex` skill 是一个不错的第一代样板：
-
-- 一个 skill
-- 一套 memory loop
-- 一个 nightly refinement 概念
-
-而这个仓库是第二代设计：
-
-- 把采集和整理拆开
-- 把 memory 当成受治理的流水线，而不是一组散文件
-- 引入审计与边界
-- 更直接地贴合 Codex 原生执行能力
