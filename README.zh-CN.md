@@ -115,7 +115,6 @@
 codex-improving/
 ├── README.md
 ├── README.zh-CN.md
-├── COMPARISON.md
 ├── references/
 ├── templates/
 ├── examples/

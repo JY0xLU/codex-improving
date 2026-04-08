@@ -112,7 +112,6 @@ Use `FEATURE_REQUESTS.md` for future capability and productization opportunities
 codex-improving/
 ├── README.md
 ├── README.zh-CN.md
-├── COMPARISON.md
 ├── references/
 ├── templates/
 ├── examples/
