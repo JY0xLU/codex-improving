@@ -1,21 +1,22 @@
 ---
 name: capture-memory
-description: Use when the user wants to capture high-signal observations during active work without consolidating or rewriting long-term memory. Capture explicit corrections, repeated failures, stable preferences, reusable workflow wins, and recurring capability gaps into inbox entries.
+description: Use when active work produces a discrete event worth recording. Capture lightweight observations into inbox entries without consolidating or promoting long-term memory.
 ---
 
 # Capture Memory
 
 Use this skill during active work.
 
-Its job is to capture signal, not to consolidate memory.
+Its job is to capture one event at a time, not to consolidate memory.
 
 ## Use This Skill When
 
-- the user explicitly corrects a recurring mistake
+- the user explicitly corrects a mistake
 - a command or workflow fails in a reusable way
-- a stable user preference becomes clear
-- a repeated successful workflow pattern emerges
-- a capability gap keeps appearing
+- a stable preference becomes clear
+- a repeatable workflow win appears
+- a capability gap keeps showing up
+- a task outcome, blocker, or decision should be remembered later
 
 ## Do Not Use This Skill When
 
@@ -26,11 +27,11 @@ Its job is to capture signal, not to consolidate memory.
 
 ## Output Target
 
-Write structured entries to `.codex/memory/inbox/`.
+Write structured entries to the active inbox, usually `D:\CodexData\.codex\memory\inbox\`.
 
 Prefer append-only daily files such as:
 
-- `.codex/memory/inbox/YYYY-MM-DD.md`
+- `D:\CodexData\.codex\memory\inbox\YYYY-MM-DD.md`
 
 ## Entry Format
 
@@ -38,6 +39,7 @@ Each entry should include:
 
 - id
 - timestamp
+- scope
 - source
 - type
 - summary
@@ -49,6 +51,8 @@ Each entry should include:
 
 - capture only non-obvious, reusable, or likely-to-recur signal
 - prefer short, high-information summaries
+- record the narrowest useful scope: `global`, `repo`, or `thread`
+- keep the entry event-oriented and lightweight
 - do not promote directly into `ACTIVE.md` or `LEARNINGS.md`
 - do not rewrite old inbox entries during active work
 - do not modify `AGENTS.md`
@@ -61,6 +65,7 @@ Good captures:
 - a stable repo-specific validation order
 - a user preference the assistant should remember later
 - a repeated missing capability worth tracking
+- a scoped observation tied to a specific thread or repo task
 
 Bad captures:
 

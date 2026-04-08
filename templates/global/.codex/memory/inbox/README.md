@@ -1,18 +1,18 @@
 # Inbox
 
-Drop append-only capture entries here.
+Append-only capture for Observed items.
 
-Recommended file naming:
+Use this folder for raw signals, draft candidates, and short notes that have not been promoted yet. Keep entries source-backed and easy to audit later.
 
-- `YYYY-MM-DD.md`
-- `YYYY-MM-DD-HHMM.md`
-
-Each entry should preserve:
-
+## Recommended entry fields
 - time
-- source
-- category
+- scope
+- stage
+- source trace
 - summary
 - details
 - suggested action
 - tags
+
+## Working rule
+- Do not rewrite ACTIVE.md or LEARNINGS.md from inbox directly without an audit trail.

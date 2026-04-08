@@ -1,6 +1,6 @@
 # Prompt Evals
 
-Use these examples to verify that the two MVP skills do not overlap too much.
+Use these examples to verify that the two Dream Loop skills stay separate and memory-priority focused.
 
 ## Should Trigger `capture-memory`
 
@@ -20,7 +20,7 @@ Use these examples to verify that the two MVP skills do not overlap too much.
 
 ## Should Trigger `dream-consolidate`
 
-1. "Run a nightly consolidation pass over the last two days of inbox entries."
+1. "Run a nightly consolidation pass over the latest inbox entries."
 2. "Deduplicate memory and promote repeated patterns with a report."
 3. "Archive expired ACTIVE.md items and explain why."
 4. "Review recent inbox entries and decide what belongs in LEARNINGS.md."

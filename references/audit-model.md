@@ -1,28 +1,35 @@
 # Audit Model
 
-The Dream Loop should be observable.
+The Dream Loop should stay observable and rollback-friendly.
 
 ## Required Outputs
 
 Nightly consolidation should produce a report that answers:
 
-- what files were read
+- what was read
 - what changed
 - what was promoted
 - what was rejected
 - what was archived
-- what still needs cleanup
+- what was rolled back or left for follow-up
+
+## Retrieval Rule
+
+Do not read full `ACTIVE.md` and `LEARNINGS.md` by default.
+
+The consolidation pass should read only the minimal slices needed to resolve the current inbox and the affected memory entries.
 
 ## Required Artifacts
 
-Use these artifacts in v1:
+Use these artifacts in v2:
 
 - `ARCHIVE/` for removed or expired content
 - a timestamped nightly report
-- source ids preserved during promotion
+- preserved source ids
+- rollback notes for anything that was reversed or superseded
 
 ## Hard Safety Rule
 
 `AGENTS.md` must never be rewritten automatically.
 
-If a consolidation pass believes a rule belongs in `AGENTS.md`, it should produce a proposal, not a direct write.
+If a consolidation pass believes a rule belongs in Policy, it should produce a proposal, not a direct write.

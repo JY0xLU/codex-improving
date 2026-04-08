@@ -9,20 +9,28 @@
 - `.codex/memory/FEATURE_REQUESTS.md`
 
 ## Files Changed
-- `LEARNINGS.md`: promoted the repeated narrow-first validation pattern
-- `ACTIVE.md`: kept existing migration workaround unchanged
-- `FEATURE_REQUESTS.md`: retained release-brief skill request as pending
+- `LEARNINGS.md`: promoted the repeated narrow-first validation pattern into long-term learning
+- `ACTIVE.md`: kept the temporary deploy safeguard as an operational rule
+- `AUDIT_LOG.md`: recorded reviewer verdict, final decision, and rollback clue
+
+## Reviewer Decisions
+- `CAN-20260408-001`
+  - Reviewer verdict: promote
+  - Final decision: `LongTerm`
+- `CAN-20260408-002`
+  - Reviewer verdict: keep operational
+  - Final decision: `Operational`
 
 ## Promotions
-- Promoted `INBOX-20260408-001` into `LEARNINGS.md`
-  - Reason: repeated across multiple sessions, generalizable, and actionable
+- Promoted `CAN-20260408-001` into `LEARNINGS.md`
+  - Reason: repeated across multiple repo tasks, generalizable, and actionable
 
 ## Rejections
-- No promotion to `AGENTS.md`
-  - Reason: not yet a stable top-level operating rule
+- No policy-layer promotion
+  - Reason: nothing met the bar for a top-level human-reviewed rule proposal
 
 ## Archive Actions
 - None
 
 ## Remaining Cleanup
-- Need one more repeated signal before creating a skill-candidate workflow file
+- Watch for one more deploy event before retiring the migration safeguard

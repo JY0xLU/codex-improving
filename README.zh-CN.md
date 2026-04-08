@@ -2,123 +2,104 @@
 
 中文 | [English](README.md)
 
-`codex-improving` 是一个面向 Codex 的 Dream Loop 系统。
+`codex-improving` 是一个面向 Codex 的 Dream Loop 系统，目标是自我改进和记忆优化。
 
-它的核心原则只有一句：
+它保留最初的闭环：
 
-- 白天只记录
-- 夜里才提炼
+- 白天只采集信号
+- 夜间统一整理记忆
 
-这个项目不是想把 Codex 做成另一个 Claude Code，而是把 Codex 自己已经擅长的东西当成“执行底座”：
+它也保留最初的基础组件：
 
 - `AGENTS.md`
 - skills
 - automations
 - worktrees
-- sandbox 与权限
+- sandbox 和权限
 - subagents
 
-目标是：
+v2 的重点很简单：
 
-- 减少重复摸索
-- 减少无意义的上下文膨胀
-- 提高长期一致性
-- 避免自动化偷偷重写顶层规则
+- 提升 agent 本身
+- 让记忆保持轻量且可检索
+- 保留审计能力和回滚路径
+- 需要时做最小范围检索，不要动辄全文重读
 
-## 这个项目解决什么问题
+## 架构
 
-很多“AI 长期记忆”方案会失败，通常是因为：
+### 1. Policy
 
-1. 把稳定规则、临时上下文、错误日志、未来需求混在一个文件里
-2. 在 agent 正在干活时，就让它大规模重写记忆
+只接受人工批准的规则。
 
-这个仓库的做法相反：
+- `AGENTS.md` 仍然是面向人的 Policy 入口
+- 不自动修改 Policy
+- 如果某条规则应当进入 Policy，就先提案再审核
 
-- 规则和学习分开
-- 先采集，后提炼
-- 只有在“重复出现、可泛化、可执行”时才允许升级
-- 永不自动改 `AGENTS.md`
-- 重要的升级、拒绝、审计判断优先走 subagent 交叉复核
+### 2. 记忆范围
 
-## 仓库包含什么
+v2 只使用三个范围：global、repo、thread。
+
+- `global` 保存跨项目模式
+- `repo` 保存项目级记忆
+- `thread` 保存短生命周期的会话上下文
+- `ACTIVE.md` 是 operational projection
+- `LEARNINGS.md` 是 long-term projection
+- 检索要尽量最小化：只读取当前任务需要的片段，不要默认读取整份记忆
+
+### 3. 改进循环
+
+白天用 `capture-memory`，夜间用 `dream-consolidate`。
+
+- 把原始信号写入 `inbox/`
+- 每晚做一次 consolidation
+- 只在证据重复且可执行时去重、过期、重写和升级
+- agent reviewer 可以自动复核并把明确案例推进到 LongTerm 记忆，但不能推进到 Policy
+- 夜间整理要成为常规动作，而不是临时清理
+
+### 4. Audit
+
+每次记忆变更都应该可解释、可恢复。
+
+- 保留 source id
+- 记录读了什么、改了什么、升级了什么、拒绝了什么、归档了什么、回滚了什么
+- 报告要支持回滚和后续复核
+- 保持低风险清理足够快，但不要牺牲可追踪性
+
+## 这个仓库包含什么
+
+这个仓库提供一个最小化的 Dream Loop：
 
 - `skills/capture-memory/`
   - 白天采集 skill
-  - 只负责把观察写进 `inbox/`
+  - 把结构化观察写入 `inbox/`
 - `skills/dream-consolidate/`
   - 夜间整理 skill
-  - 负责去重、失效处理、重写、升级
+  - 负责去重、过期处理、重写、升级和生成报告
 - `templates/`
-  - 初始 `AGENTS.md` 片段
-  - 初始 memory 文件模板
+  - `AGENTS.md` 起始片段
+  - 记忆文件起始模板
 - `examples/`
-  - 一套最小示例
+  - 一个最小化的 global-memory 示例
 - `automations/`
-  - 推荐的夜间自动化 prompt 与调度样例
+  - 推荐的夜间自动化 prompt 和调度
 
-## 五层结构
+## 核心规则
 
-### 1. 稳定规则层
-
-使用 `AGENTS.md` 作为入口。
-
-- 这里只放短、稳、可长期复用的规则
-- 不允许自动改
-- 只能走人工 review
-
-### 2. 原始采集层
-
-使用 `.codex/memory/inbox/` 作为 append-only 事件流。
-
-适合记录：
-
-- 用户纠正
-- 反复失败的命令
-- 稳定偏好
-- 成功且重复的工作流
-- 值得追踪的能力缺口
-
-### 3. 工作记忆层
-
-使用 `ACTIVE.md` 存高频、当前阶段有用的指导。
-
-- 短期 workaround
-- sprint 期间必须遵守的约束
-- 虽然临时但很重要的操作规则
-
-### 4. 长期学习层
-
-使用 `LEARNINGS.md` 存稳定、跨任务可复用的学习。
-
-- 通用最佳实践
-- 项目内稳定模式
-- 可复用的排障策略
-
-### 5. 机会层
-
-使用 `FEATURE_REQUESTS.md` 存未来能力与产品化机会。
-
-- 缺少的 skill
-- 反复出现的流程痛点
-- 未来可以 skill 化或自动化的模式
-
-## 核心行为规则
-
-- 白天采集只写 `.codex/memory/inbox/`
-- 夜间整理只改 `.codex/memory/` 下的记忆文件
-- `AGENTS.md` 禁止自动改
-- 所有升级、合并、删除、拒绝都必须可审计
-- `ACTIVE.md` 允许临时规则，但必须写明失效条件
-- `capture-memory` 应保持轻量；多 agent 复核主要留给 Dream Loop 审核阶段
+- 白天采集只写入 `.codex/memory/inbox/`
+- 夜间整理可以重写 `.codex/memory/` 下的记忆文件
+- `AGENTS.md` 绝不自动修改
+- 所有升级、合并、归档和拒绝都必须可审计
+- `ACTIVE.md` 可以放临时指导，但每条临时内容都要带失效条件
+- `capture-memory` 要保持轻量；重 subagent 的工作留给 Dream Loop review 和 audit
 
 ## Subagent 倾向
 
-这个仓库现在更推荐“subagent-assisted review”模式：
+这个仓库在 Dream Loop 维护上更偏向 subagent-assisted review：
 
-- `capture-memory` 继续保持单 agent 轻量工作流
-- `dream-consolidate` 在 promotion、rejection、archive、冲突判断时，优先使用至少一个 subagent 做交叉复核
-- 纯低风险清理可以继续走单 agent fast path
-- 如果主 agent 和 reviewer subagent 出现分歧，最终报告必须写清楚分歧与裁决
+- `capture-memory` 仍然是轻量的单 agent 流程
+- `dream-consolidate` 在 promotion、rejection、archive 和 conflict review 时应优先使用至少一个 subagent
+- 低风险清理仍然可以走单 agent fast path
+- 如果主 agent 和 reviewer 有分歧，最终报告要记录分歧和裁决结果
 
 ## 仓库结构
 
@@ -135,12 +116,12 @@ codex-improving/
     └── dream-consolidate/
 ```
 
-## 快速上手
+## 快速开始
 
-1. 把 `skills/capture-memory/` 和 `skills/dream-consolidate/` 复制到 `$CODEX_HOME/skills/` 或 `~/.codex/skills/`，让 Codex 能发现它们
-2. 把 `templates/global/` 下的模板复制到全局 Codex home 作为初始结构
-3. 把 `AGENTS.md` 片段接进你的入口规则
-4. 白天用 `capture-memory`
-5. 夜间用 `dream-consolidate`
-6. 对重要的 nightly 提升/拒绝判断，优先走 subagent 交叉复核
-7. 先 review nightly report，再信任升级结果
+1. 将 `skills/capture-memory/` 和 `skills/dream-consolidate/` 复制到 `$CODEX_HOME/skills/` 或 `~/.codex/skills/`，让 Codex 能发现它们。
+2. 将 `templates/global/` 下的模板复制到全局 Codex home 作为起始结构。
+3. 把 `AGENTS.md` 片段接入你的全局入口或项目入口。
+4. 在日常工作中使用 `capture-memory`。
+5. 用 nightly automation 运行 `dream-consolidate`。
+6. 对重要的 nightly promotion 或 rejection 决策，优先做 subagent 交叉复核。
+7. 在信任升级结果之前，先查看生成的 audit 报告。

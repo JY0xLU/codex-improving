@@ -1,33 +1,28 @@
 # Scope Model
 
-## v1 Default
+## v2 Current Model
 
-MVP v1 assumes a global-first layout:
+The repo standardizes on three memory scopes:
 
-- global rule entry: `~/.codex/AGENTS.md`
-- global memory directory: `~/.codex/memory/`
+- `global` for cross-project patterns
+- `repo` for project-specific memory
+- `thread` for short-lived session context
 
-This keeps the first version simple and easy to explain.
+This keeps the system focused on the smallest scope that can hold a useful signal.
 
-## Why Not More In v1
+## Scope Roles
 
-Repo-local memory and custom profile switching are valuable, but they add policy complexity:
+- `global` is the broadest reusable layer and should stay stable
+- `repo` captures project-local memory that should not leak into other repos
+- `thread` stays narrow and transient, and should be the first place to discard stale context
 
-- merge strategy between scopes
-- conflict resolution
-- promotion target selection
-- cross-repo contamination risk
+## Scope Rules
 
-Those concerns are deferred to later versions.
+- Prefer the narrowest scope that can answer the current task
+- Do not expand a lookup to full memory files if a smaller slice is enough
+- Do not turn thread context into policy
+- Policy belongs to human-approved `AGENTS.md`, not memory scopes
 
-## Future Scope Roadmap
+## Why This Matters
 
-### v2: Global + Repo-Local
-
-- `~/.codex/memory/` for personal cross-project patterns
-- `<repo>/.codex/memory/` for project-specific learnings
-
-### v3: Custom Profiles
-
-- support alternative `CODEX_HOME`
-- document portable profile setups for shared or sandboxed environments
+This v2 model keeps retrieval cheap and reduces accidental context bloat while still supporting long-term learning through `LEARNINGS.md`.
