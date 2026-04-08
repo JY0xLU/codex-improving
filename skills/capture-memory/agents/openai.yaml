@@ -1,0 +1,4 @@
+interface:
+  display_name: "Capture Memory"
+  short_description: "Capture high-signal observations into inbox entries during active Codex work."
+  default_prompt: "Use $capture-memory to record high-signal observations into the Dream Loop inbox without rewriting long-term memory."
