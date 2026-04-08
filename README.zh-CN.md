@@ -1,8 +1,8 @@
-# Codex Improving
+# Codex Native Dream Loop
 
 中文 | [English](README.md)
 
-`codex-improving` 是一个面向 Codex 的 Dream Loop 系统，目标是自我改进和记忆优化。
+`Codex Native Dream Loop` 是一个面向 Codex 的 Dream Loop 系统，目标是自我改进和记忆优化。
 
 它保留最初的闭环：
 
@@ -104,7 +104,7 @@ v2 只使用三个范围：global、repo、thread。
 ## 仓库结构
 
 ```text
-codex-improving/
+repo/
 ├── README.md
 ├── README.zh-CN.md
 ├── references/

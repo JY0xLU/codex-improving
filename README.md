@@ -1,8 +1,8 @@
-# Codex Improving
+# Codex Native Dream Loop
 
 [中文](README.zh-CN.md) | English
 
-`codex-improving` is a Codex-native Dream Loop for self-improvement and memory optimization.
+`Codex Native Dream Loop` is a Codex-native Dream Loop for self-improvement and memory optimization.
 
 It keeps the original loop:
 
@@ -104,7 +104,7 @@ This repo prefers subagent-assisted review for Dream Loop maintenance:
 ## Repo Layout
 
 ```text
-codex-improving/
+repo/
 ├── README.md
 ├── README.zh-CN.md
 ├── references/

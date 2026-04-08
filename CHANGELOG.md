@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `codex-improving` will be documented in this file.
+All notable changes to `Codex Native Dream Loop` will be documented in this file.
 
 ## 2026-04-09
 
