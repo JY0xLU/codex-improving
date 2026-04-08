@@ -122,16 +122,6 @@ codex-improving/
     └── dream-consolidate/
 ```
 
-## Non-Goals For v1
-
-These are intentionally deferred:
-
-- multi-subagent consolidation pipelines
-- automatic skill generation
-- repo-local vs global automatic switching
-- custom `CODEX_HOME` orchestration
-- plugin packaging
-
 ## Quick Start
 
 1. Copy `skills/capture-memory/` and `skills/dream-consolidate/` into `$CODEX_HOME/skills/` or `~/.codex/skills/` so Codex can discover them.
@@ -140,18 +130,3 @@ These are intentionally deferred:
 4. Use `capture-memory` during active work.
 5. Run `dream-consolidate` on a nightly automation.
 6. Review the generated report before trusting promoted rules.
-
-## Relationship To The Earlier Skill
-
-The earlier `self-improving-for-codex` skill is a good first-generation pattern:
-
-- one skill
-- one memory loop
-- one nightly refinement concept
-
-This repository is the second-generation design:
-
-- split capture from consolidation
-- treat memory as a governed pipeline, not just a set of files
-- introduce auditability and layer boundaries
-- align more directly with Codex-native execution primitives
