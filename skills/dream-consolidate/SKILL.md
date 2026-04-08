@@ -35,8 +35,9 @@ Its job is to refine memory, not to capture new signal from the current task.
 1. deduplicate repeated inbox observations
 2. move expired temporary items out of `ACTIVE.md`
 3. rewrite vague or relative dates into clearer absolute references
-4. promote repeated, generalizable, actionable guidance
-5. append a nightly report
+4. use subagent cross-review for promotion, rejection, archive, or conflict decisions
+5. promote repeated, generalizable, actionable guidance
+6. append a nightly report
 
 ## Promotion Rules
 
@@ -64,6 +65,8 @@ Keep in raw memory when the item is:
 - never invent learnings without source trace
 - never silently delete evidence; archive it
 - every promotion or rejection should be explainable
+- keep `capture-memory` lightweight; reserve subagent-heavy work for review and audit decisions
+- use a single-agent fast path only for low-risk cleanup with no meaningful judgment call
 
 ## Required Output
 
@@ -71,6 +74,8 @@ Produce a report covering:
 
 - files read
 - files changed and why
+- items reviewed by subagents
+- main-agent/subagent disagreements and final resolution
 - promotions made
 - promotions rejected and why
 - archive actions

@@ -38,6 +38,7 @@
 - 先采集，后提炼
 - 只有在“重复出现、可泛化、可执行”时才允许升级
 - 永不自动改 `AGENTS.md`
+- 重要的升级、拒绝、审计判断优先走 subagent 交叉复核
 
 ## MVP v1 包含什么
 
@@ -108,6 +109,16 @@
 - `AGENTS.md` 禁止自动改
 - 所有升级、合并、删除、拒绝都必须可审计
 - `ACTIVE.md` 允许临时规则，但必须写明失效条件
+- `capture-memory` 应保持轻量；多 agent 复核主要留给 Dream Loop 审核阶段
+
+## Subagent 倾向
+
+这个仓库现在更推荐“subagent-assisted review”模式：
+
+- `capture-memory` 继续保持单 agent 轻量工作流
+- `dream-consolidate` 在 promotion、rejection、archive、冲突判断时，优先使用至少一个 subagent 做交叉复核
+- 纯低风险清理可以继续走单 agent fast path
+- 如果主 agent 和 reviewer subagent 出现分歧，最终报告必须写清楚分歧与裁决
 
 ## 仓库结构
 
@@ -131,4 +142,5 @@ codex-improving/
 3. 把 `AGENTS.md` 片段接进你的入口规则
 4. 白天用 `capture-memory`
 5. 夜间用 `dream-consolidate`
-6. 先 review nightly report，再信任升级结果
+6. 对重要的 nightly 提升/拒绝判断，优先走 subagent 交叉复核
+7. 先 review nightly report，再信任升级结果

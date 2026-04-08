@@ -33,6 +33,7 @@ This repo takes the opposite approach:
 - capture first, consolidate later
 - only promote memory when it is repeated, generalizable, and actionable
 - never auto-edit `AGENTS.md`
+- prefer subagent cross-review for promotion, rejection, and audit decisions
 
 ## MVP v1
 
@@ -105,6 +106,16 @@ Use `FEATURE_REQUESTS.md` for future capability and productization opportunities
 - `AGENTS.md` must not be auto-modified
 - Every promotion, merge, archive, and rejection should be auditable
 - `ACTIVE.md` may contain temporary guidance, but every temporary item should include an expiry condition
+- `capture-memory` should stay lightweight; subagent-heavy work belongs in Dream Loop review and audit passes
+
+## Subagent Bias
+
+This repo now prefers a subagent-assisted review model for Dream Loop maintenance:
+
+- `capture-memory` remains a lightweight single-agent workflow
+- `dream-consolidate` should prefer at least one subagent for promotion, rejection, archive, and conflict review
+- low-risk cleanup may still use a single-agent fast path
+- if the main agent and reviewer disagree, the final report should record the disagreement and the resolution
 
 ## Repo Layout
 
@@ -128,4 +139,5 @@ codex-improving/
 3. Add the `AGENTS.md` snippet to your global or project entrypoint.
 4. Use `capture-memory` during active work.
 5. Run `dream-consolidate` on a nightly automation.
-6. Review the generated report before trusting promoted rules.
+6. Prefer subagent cross-review for important nightly promotion or rejection decisions.
+7. Review the generated report before trusting promoted rules.
