@@ -1,6 +1,6 @@
 # Promotion Rules
 
-Use these rules when deciding whether a captured observation should remain raw, move into `ACTIVE.md`, or graduate into `LEARNINGS.md`.
+Use these rules when deciding whether a captured observation should remain raw, move into `ACTIVE.md`, or graduate into `LEARNINGS.md` / LongTerm.
 
 ## Minimum Bar
 
@@ -12,7 +12,7 @@ Promote only when an item is:
 
 ## Promote To `ACTIVE.md`
 
-Use `ACTIVE.md` for items that are:
+Use `ACTIVE.md` for the operational projection:
 
 - high-frequency right now
 - likely to matter at the start of upcoming tasks
@@ -26,11 +26,15 @@ Every temporary item should include one of:
 
 ## Promote To `LEARNINGS.md`
 
-Use `LEARNINGS.md` for items that are:
+Use `LEARNINGS.md` for the long-term projection:
 
 - stable across sessions
 - useful across multiple tasks
 - still valuable after the current sprint or incident ends
+
+An agent reviewer may auto-review and promote clear cases into LongTerm (`LEARNINGS.md`), but Policy changes still require human approval.
+
+Thread-scoped context should usually stay temporary. If a thread-only pattern looks durable, rewrite it at `repo` or `global` scope before promoting it into `LEARNINGS.md`.
 
 ## Keep In `inbox/`
 
@@ -59,3 +63,4 @@ Every promotion decision should capture:
 - promotion rationale
 - rejection rationale if applicable
 - expiry condition when promoting into `ACTIVE.md`
+- reviewer path when an agent reviewer auto-promotes into LongTerm

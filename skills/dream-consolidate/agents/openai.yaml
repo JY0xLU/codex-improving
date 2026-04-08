@@ -1,4 +1,4 @@
 interface:
   display_name: "Dream Consolidate"
-  short_description: "Run an off-hours Dream Loop consolidation pass for Codex memory."
-  default_prompt: "Use $dream-consolidate to clean, deduplicate, and promote Codex memory with an audit trail, without rewriting AGENTS.md."
+  short_description: "Generate and review Dream Loop memory candidates with audit-first consolidation."
+  default_prompt: "Use $dream-consolidate to build candidates, review them, and apply audit-first memory updates without rewriting AGENTS.md."

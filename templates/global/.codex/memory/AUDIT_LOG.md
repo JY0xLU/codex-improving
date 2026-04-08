@@ -1,15 +1,17 @@
 # AUDIT_LOG
 
-Record every promotion, rejection, merge, and archive action here.
+Record every promotion, rejection, merge, archive, and rollback decision here.
 
-## [AUDIT-YYYYMMDD-001]
-**Timestamp**: ISO-8601 timestamp
-**Action**: promote | reject | merge | archive
-**Source IDs**: inbox ids or prior memory ids
-**Target**: ACTIVE.md | LEARNINGS.md | FEATURE_REQUESTS.md | ARCHIVE/
+## Entry Format
+- [AUDIT-YYYYMMDD-###]
+  Timestamp: ISO-8601 timestamp
+  Action: promote | reject | merge | archive | rollback
+  Scope: global | repo | thread
+  Source trace: inbox ids, report ids, or prior memory ids
+  Reviewer verdict: approved | needs review | rejected
+  Final decision: keep | revise | retire
+  Rollback clue: what to undo if the decision is reversed
+  Target: ACTIVE.md | LEARNINGS.md | FEATURE_REQUESTS.md | ARCHIVE/
 
-### Reason
-...
-
-### Result
-...
+## Audit Trail
+- ...

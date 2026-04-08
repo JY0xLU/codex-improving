@@ -2,14 +2,14 @@
 
 [中文](README.zh-CN.md) | English
 
-`codex-improving` is a Codex-native Dream Loop system.
+`codex-improving` is a Codex-native Dream Loop for self-improvement and memory optimization.
 
-Its core idea is simple:
+It keeps the original loop:
 
-- Daytime only captures memory.
-- Nighttime consolidates memory.
+- daytime captures signal
+- nighttime consolidates memory
 
-This project does not try to turn Codex into another Claude Code. Instead, it treats Codex's native building blocks as the execution substrate:
+It also keeps the original building blocks:
 
 - `AGENTS.md`
 - skills
@@ -18,22 +18,52 @@ This project does not try to turn Codex into another Claude Code. Instead, it tr
 - sandbox and permissions
 - subagents
 
-The goal is to reduce repeated rediscovery, reduce avoidable context bloat, and improve consistency without letting automation silently rewrite top-level rules.
+The v2 emphasis is simple:
 
-## Why This Exists
+- improve the agent
+- keep memory lightweight and searchable
+- preserve auditability and rollback paths
+- avoid broad rereads when a narrow lookup is enough
 
-Most "AI memory" systems fail for one of two reasons:
+## Architecture
 
-1. They mix stable rules, temporary context, error logs, and future ideas into one file.
-2. They try to rewrite memory while the agent is actively solving the current task.
+### 1. Policy
 
-This repo takes the opposite approach:
+Human-approved rules only.
 
-- keep rules and learnings separate
-- capture first, consolidate later
-- only promote memory when it is repeated, generalizable, and actionable
-- never auto-edit `AGENTS.md`
-- prefer subagent cross-review for promotion, rejection, and audit decisions
+- `AGENTS.md` stays the human-facing policy entrypoint
+- never auto-edit policy
+- if a rule belongs in Policy, propose it for review
+
+### 2. Memory Scopes
+
+Only three scopes are used: global, repo, and thread.
+
+- `global` holds cross-project patterns
+- `repo` holds project-specific memory
+- `thread` holds short-lived session context
+- `ACTIVE.md` is the operational projection
+- `LEARNINGS.md` is the long-term projection
+- retrieval should be minimal: read only the slices needed for the task, not the full memory set
+
+### 3. Improvement Loop
+
+Use `capture-memory` during active work and `dream-consolidate` off-hours.
+
+- capture raw signal into `inbox/`
+- consolidate nightly
+- deduplicate, expire, rewrite, and promote only when evidence is repeated and actionable
+- an agent reviewer may auto-review and promote clear cases into long-term memory, but not into Policy
+- keep nightly consolidation as a regular habit, not an ad hoc cleanup
+
+### 4. Audit
+
+Every memory change should be explainable and recoverable.
+
+- preserve source ids
+- record what was read, changed, promoted, rejected, archived, and rolled back
+- prefer reports that support rollback and follow-up review
+- keep low-risk cleanup fast, but never at the expense of traceability
 
 ## What This Repository Includes
 
@@ -44,7 +74,7 @@ This repository ships a minimal Dream Loop:
   - records structured observations into `inbox/`
 - `skills/dream-consolidate/`
   - a nighttime consolidation skill
-  - deduplicates, expires, rewrites, and promotes memory
+  - deduplicates, expires, rewrites, promotes, and reports memory changes
 - `templates/`
   - starter `AGENTS.md` snippet
   - starter memory files
@@ -52,52 +82,6 @@ This repository ships a minimal Dream Loop:
   - a minimal global-memory example
 - `automations/`
   - a recommended nightly automation prompt and schedule
-
-## Memory Layers
-
-### 1. Stable Rules Layer
-
-Use `AGENTS.md` as the main entry point.
-
-- Put short, durable operating rules here
-- Do not auto-edit it
-- Only change it through human review
-
-### 2. Raw Capture Layer
-
-Use `.codex/memory/inbox/` as an append-only event stream.
-
-Capture things like:
-
-- user corrections
-- repeated command failures
-- stable user preferences
-- successful recurring workflows
-- capability gaps worth tracking
-
-### 3. Working Memory Layer
-
-Use `ACTIVE.md` for high-frequency, currently useful guidance.
-
-- short-lived workarounds
-- sprint-specific rules
-- temporary but important operational constraints
-
-### 4. Long-Term Learning Layer
-
-Use `LEARNINGS.md` for stable, reusable lessons.
-
-- cross-task best practices
-- stable project patterns
-- reusable debugging strategies
-
-### 5. Opportunity Layer
-
-Use `FEATURE_REQUESTS.md` for future capability and productization opportunities.
-
-- missing skills
-- repeated workflow pain points
-- good candidates for later automation or skill extraction
 
 ## Core Rules
 
@@ -110,7 +94,7 @@ Use `FEATURE_REQUESTS.md` for future capability and productization opportunities
 
 ## Subagent Bias
 
-This repo now prefers a subagent-assisted review model for Dream Loop maintenance:
+This repo prefers subagent-assisted review for Dream Loop maintenance:
 
 - `capture-memory` remains a lightweight single-agent workflow
 - `dream-consolidate` should prefer at least one subagent for promotion, rejection, archive, and conflict review
@@ -140,4 +124,4 @@ codex-improving/
 4. Use `capture-memory` during active work.
 5. Run `dream-consolidate` on a nightly automation.
 6. Prefer subagent cross-review for important nightly promotion or rejection decisions.
-7. Review the generated report before trusting promoted rules.
+7. Review the generated audit report before trusting promoted rules.

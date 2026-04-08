@@ -1,16 +1,17 @@
 # FEATURE_REQUESTS
 
-## [FEAT-YYYYMMDD-001] capability_name
-**Logged**: ISO-8601 timestamp
-**Priority**: low | medium | high | critical
-**Status**: pending | accepted | archived
-**Source IDs**: inbox item ids
+Candidate memory for future capability work.
 
-### Requested Capability
-...
+Use this file for repeated gaps, missing skills, or tooling ideas that should be tracked but not yet promoted.
 
-### Why It Keeps Reappearing
-...
+## Entry Format
+- [FEAT-YYYYMMDD-###] capability_name
+  Scope: global | repo | thread
+  Stage: Candidate
+  Source trace: inbox id, report id, or prior memory id
+  Reviewer verdict: approved | needs review | rejected
+  Final decision: keep | refine | archive
+  Rollback clue: what to undo if this is no longer needed
 
-### Suggested Next Step
-...
+## Candidate Requests
+- ...

@@ -1,6 +1,6 @@
 # Automation Design
 
-Use a single nightly automation for MVP v1.
+Use a single nightly automation for the Dream Loop.
 
 ## Schedule
 
@@ -15,9 +15,9 @@ Recommended:
 Read:
 
 - `.codex/memory/inbox/`
-- `.codex/memory/ACTIVE.md`
-- `.codex/memory/LEARNINGS.md`
-- `.codex/memory/FEATURE_REQUESTS.md`
+- only the relevant slices of `.codex/memory/ACTIVE.md`
+- only the relevant slices of `.codex/memory/LEARNINGS.md`
+- `.codex/memory/FEATURE_REQUESTS.md` when a gap is being tracked
 
 ## Outputs
 
@@ -27,7 +27,8 @@ The automation may:
 - promote repeated operational guidance into `ACTIVE.md`
 - promote stable reusable patterns into `LEARNINGS.md`
 - move expired items into `ARCHIVE/`
-- append a nightly report
+- append a nightly audit report
+- preserve rollback context for reversions and superseded items
 
 The automation must not:
 

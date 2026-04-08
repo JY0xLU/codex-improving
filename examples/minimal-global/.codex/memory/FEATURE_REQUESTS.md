@@ -2,9 +2,12 @@
 
 ## [FEAT-20260408-001] release-brief skill
 **Logged**: 2026-04-08T10:00:00+08:00
-**Priority**: medium
-**Status**: pending
-**Source IDs**: INBOX-20260407-005
+**Stage**: Candidate
+**Scope**: global
+**Source Trace**: OBS-20260407-005
+**Reviewer Verdict**: approved
+**Final Decision**: keep
+**Rollback Clue**: archive if release-summary work stops recurring
 
 ### Requested Capability
 Generate a release brief skill from repeated release-note and changelog tasks.
@@ -13,4 +16,4 @@ Generate a release brief skill from repeated release-note and changelog tasks.
 The same release summary workflow appeared across multiple sessions with similar outputs.
 
 ### Suggested Next Step
-Track the next two occurrences and then move into a future skill candidate file.
+Track the next two occurrences and keep this request as a candidate until the gap is clearly reusable.

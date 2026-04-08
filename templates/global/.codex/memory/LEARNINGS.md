@@ -1,16 +1,20 @@
 # LEARNINGS
 
-## [LRN-YYYYMMDD-001] category
-**Logged**: ISO-8601 timestamp
-**Priority**: low | medium | high | critical
-**Status**: pending | promoted | archived
-**Source IDs**: inbox item ids
+Long-term memory projection.
 
-### Summary
-...
+Use this file for stable patterns that should survive beyond a single task or incident. Keep the rule, the evidence, and the reason it generalizes.
 
-### Why It Generalizes
-...
+## Entry Format
+- [LRN-YYYYMMDD-###] title
+  Scope: global | repo
+  Stage: LongTerm
+  Source trace: inbox id, report id, or prior memory id
+  Reviewer verdict: approved | needs review | rejected
+  Final decision: keep | refine | archive
+  Rollback clue: what to undo if the pattern stops being true
 
-### Actionable Rule
-...
+## Long-Term Rules
+- ...
+
+## Replaced or Retired
+- ...
