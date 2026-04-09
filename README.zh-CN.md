@@ -182,6 +182,16 @@ repo/
 
 ## 快速开始
 
+如果你想图省事，最简单的方式就是直接把这个仓库丢给 Codex，让它帮你安装。
+
+比如直接说：
+
+```text
+帮我从 https://github.com/JY0xLU/codex-improving 安装这些 skills，并接进我的 Codex 配置。
+```
+
+如果你更想手动安装：
+
 1. 把 `skills/capture-memory/` 和 `skills/dream-consolidate/` 复制到 `$CODEX_HOME/skills/` 或 `~/.codex/skills/`。
 2. 把 `templates/global/` 下的模板复制到你的 Codex home 作为起始结构。
 3. 把 `AGENTS.md` 片段接入你的全局入口或项目入口。

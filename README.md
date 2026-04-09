@@ -184,6 +184,16 @@ repo/
 
 ## Quick Start
 
+If you want the fastest path, just hand this repository to Codex and let it install the skills for you.
+
+For example:
+
+```text
+Install the skills from https://github.com/JY0xLU/codex-improving and wire them into my Codex setup.
+```
+
+If you prefer to do it manually:
+
 1. Copy `skills/capture-memory/` and `skills/dream-consolidate/` into `$CODEX_HOME/skills/` or `~/.codex/skills/`.
 2. Copy the templates under `templates/global/` into your Codex home as a starting point.
 3. Add the `AGENTS.md` snippet to your global or project entrypoint.
