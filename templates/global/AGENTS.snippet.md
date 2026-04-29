@@ -27,10 +27,10 @@ Capability evolution workflow:
 7. Treat successful capability use as future memory signal; capture it now and let Dream Loop decide whether it belongs in `ACTIVE.md` or `LEARNINGS.md`
 
 During active work:
-1. Capture high-signal observations into `~/.codex/memory/inbox/`
-2. Keep raw Observed items short and source-backed
-3. Do not rewrite long-term memory while solving the current task
-4. Use `capture-memory` for event capture only
+1. Direct-land explicit strong signal into `~/.codex/memory/ACTIVE.md` or `~/.codex/memory/LEARNINGS.md` when the destination is already clear
+2. Use `~/.codex/memory/inbox/` only for inferred, ambiguous, weak, or still-competing signal that is not ready for public memory
+3. Keep unresolved inbox items short and source-backed
+4. Use `capture-memory` for memory landing and quarantine decisions during active work
 5. Use `capability-evolution` for capability discovery, validation, and adoption only
 
 Memory policy:
@@ -44,9 +44,9 @@ Off-hours and maintenance:
 4. Keep low-risk cleanup on a single-agent fast path when no judgment call is needed
 
 Promotion rules:
-1. Promote temporary but high-impact hot routes or hot rules into `~/.codex/memory/ACTIVE.md`
-2. Promote validated reusable winning paths into `~/.codex/memory/LEARNINGS.md`
-3. Preserve `~/.codex/memory/AUDIT_LOG.md` and `~/.codex/memory/ARCHIVE/` for traceability
+1. Write explicit hot temporary directives, corrections, or routes directly into `~/.codex/memory/ACTIVE.md`
+2. Write explicit durable reusable preferences, corrections, routes, capability choices, or failure patterns directly into `~/.codex/memory/LEARNINGS.md`
+3. Keep only unresolved inferred signal in `~/.codex/memory/inbox/`, and preserve `~/.codex/memory/AUDIT_LOG.md` plus `~/.codex/memory/ARCHIVE/` for traceability
 
 Behavior expectations:
 - Prefer short, auditable memory entries over long narratives
@@ -56,4 +56,5 @@ Behavior expectations:
 - Prefer official plugin-based workflows when they cover the task well
 - Do not turn one successful experiment into policy without repeated evidence
 - Keep the public model small: `ACTIVE.md` and `LEARNINGS.md` should stay readable without exposing extra layers as daily operating concepts
+- Do not let explicit strong signal stall in `inbox/`; use `inbox/` only as a short-lived quarantine for unresolved signal
 - A recurring automation may read repo-tracked files for audit and alignment, but it should not modify repo-tracked files unless a human explicitly asks for implementation

@@ -16,12 +16,13 @@ Work in four sections:
 1. Memory Maintenance
 - maintain Dream Loop memory only inside the canonical `.codex/memory` root
 - treat `ACTIVE.md` and `LEARNINGS.md` as the only public memory layers
-- read inbox, the relevant slices of ACTIVE.md and LEARNINGS.md, and ARCHIVE only when lineage matters
+- treat `inbox` as a short-lived quarantine for inferred or unresolved signal, not as a holding area for explicit strong signal
+- read inbox plus only the relevant slices of ACTIVE.md, LEARNINGS.md, and ARCHIVE when needed
 - use dream-consolidate to refresh hot entries, strengthen route memory, archive stale or losing routes, and preserve a minimal audit trail
-- treat `inbox` as a short-lived staging buffer, not a long-term candidate pool
-- inspect entries older than 6 hours and auto-land only the ones that are contradiction-free, source-backed, and already written in executable form
+- if explicit user directives, corrections, or durable preferences are still sitting in inbox, move them out immediately instead of waiting another cycle
+- review inbox entries older than 6 hours and auto-land only the contradiction-free, source-backed, executable inferred items whose destination is now clear
 - write hot temporary guidance into `ACTIVE.md`, stable reusable preferences or routes into `LEARNINGS.md`, and archive noise or rejected evidence
-- do not promote by age alone; require stronger evidence for `LEARNINGS.md` unless the item is an explicit user directive or correction with a durable action
+- do not promote by age alone; require stronger evidence for inferred routes before landing in `LEARNINGS.md`
 
 2. Repo Round Audit
 - read only the minimum repo context needed to understand the current round

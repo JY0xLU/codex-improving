@@ -1,10 +1,18 @@
 # LEARNINGS
 
-Reusable path memory.
+Reusable path memory. Use the index first, then read only the section relevant to the current task.
 
-Use this file for routes that repeatedly win and are worth reusing across tasks or sessions. Each entry should read like a route library record, not a vague lesson.
+## Index
+
+- `Core Workflow`: global execution style, Dream Loop behavior, tool-faithful work, subagents
+- `GitHub / Repo Publishing`: visibility, upload safety, rename and release hygiene
+- `Docs / README Style`: bilingual docs, README polish, public project presentation
+- `Experiments / Benchmarks`: paid model runs, analysis flow, stop rules
+- `Windows / Codex App`: Windows encoding, browser profile, Codex App skill validation, recovery routes
+- `Project-Specific Routes`: narrow routes kept for reuse only when that project appears again
 
 ## Entry Format
+
 - [LRN-YYYYMMDD-###] route title
   Intent: repair | optimize | innovate | explore
   Scope: global | repo
@@ -17,8 +25,30 @@ Use this file for routes that repeatedly win and are worth reusing across tasks 
   Reviewer verdict: approved | needs review | rejected
   Rollback clue: what to undo if the route stops winning
 
-## Path Library
+## Core Workflow
+
+- ...
+
+## GitHub / Repo Publishing
+
+- ...
+
+## Docs / README Style
+
+- ...
+
+## Experiments / Benchmarks
+
+- ...
+
+## Windows / Codex App
+
+- ...
+
+## Project-Specific Routes
+
 - ...
 
 ## Retired Or Replaced Routes
+
 - ...

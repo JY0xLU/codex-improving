@@ -1,20 +1,21 @@
 ---
 name: dream-consolidate
-description: Use when a nightly or manual Dream Loop pass should keep `ACTIVE.md` hot, strengthen `LEARNINGS.md` as route memory, and record audit-first updates without rewriting policy.
+description: Use when a nightly or manual Dream Loop pass should keep ACTIVE.md hot, strengthen LEARNINGS.md, and drain only unresolved inferred signal from inbox.
 ---
 
 # Dream Consolidate
 
 Use this skill during off-hours or explicit maintenance passes.
 
-Its job is to refine the public two-layer model and keep the supporting audit trail clean. It does not capture new signal from the current task.
+Its job is to refine public memory and resolve leftover uncertainty. It is not supposed to keep explicit strong signal waiting in inbox.
 
 ## Use This Skill When
 
 - the user asks for nightly memory maintenance
-- an automation is reviewing recent inbox entries
-- the user wants hot routes refreshed or route memory strengthened
-- stale or superseded routes should be archived cleanly
+- an automation is reviewing unresolved inbox evidence
+- hot routes should be refreshed or retired
+- reusable routes should be strengthened
+- stale or losing routes should be archived cleanly
 
 ## Do Not Use This Skill When
 
@@ -31,16 +32,18 @@ Its job is to refine the public two-layer model and keep the supporting audit tr
 
 ## Main Actions
 
-1. review recent inbox evidence and current public memory
-2. treat `inbox/` as a short-lived staging buffer rather than a long-term candidate pool
-3. keep `ACTIVE.md` hot by revising or retiring stale entries
-4. merge duplicate evidence when multiple entries support the same route
-5. archive losing, stale, rejected, or superseded routes instead of deleting them
-6. rewrite vague or relative dates into clearer absolute references
-7. auto-land high-signal entries older than one consolidation cycle when they pass the promotion checks
+1. review unresolved inbox evidence and current public memory
+2. treat `inbox/` as a short-lived quarantine buffer for inferred or unresolved signal
+3. move or rewrite any misplaced strong signal out of `inbox/` immediately
+4. keep `ACTIVE.md` hot by revising or retiring stale entries
+5. merge duplicate evidence when multiple entries support the same route
+6. strengthen `LEARNINGS.md` with validated winning routes
+7. archive losing, stale, rejected, or superseded routes instead of deleting them
 8. append an audit report with source trace and route rationale
 
 ## Public-Memory Decisions
+
+Direct-land guidance should already have happened during active work when the signal was explicit and the destination was clear.
 
 Refresh `ACTIVE.md` when:
 
@@ -54,26 +57,28 @@ Strengthen `LEARNINGS.md` when:
 - the evidence explains why it wins
 - the entry already reads like an executable preference, route, capability choice, or failure pattern
 
-Auto-land from `inbox/` when all of these are true:
+Only keep items in `inbox/` when they are:
 
-- the entry is older than one consolidation cycle, which defaults to 6 hours in the recurring automation
+- inferred rather than directly stated
+- still ambiguous or still competing with another route
+- only seen once and not yet strong enough to shape future behavior
+- useful as evidence later, but not yet good enough for `ACTIVE.md` or `LEARNINGS.md`
+
+Auto-land from `inbox/` only when all of these are true:
+
+- the entry has survived at least one consolidation cycle, which defaults to 6 hours in the recurring automation
 - no later user correction, reviewer objection, or contradictory source invalidates it
-- the entry has a source trace and is already written in short executable form
-- the destination is clear: `ACTIVE.md` for hot temporary guidance, `LEARNINGS.md` for stable reusable guidance
+- the entry has source trace and is already written in short executable form
+- the destination is clear
 
-Require stronger evidence before landing in `LEARNINGS.md` unless the item is an explicit user directive or correction with a durable action. For inferred routes, failures, or capabilities, prefer repeated evidence across unrelated tasks.
+Require stronger evidence before landing in `LEARNINGS.md` for inferred routes, failures, or capability choices. Explicit user directives and explicit user corrections should not linger in `inbox/`.
 
 Archive when:
 
 - the route is no longer hot
 - a better route replaced it
 - the evidence no longer supports keeping it public
-
-Keep evidence in `inbox/` when:
-
-- it is still too early to surface publicly
-- it is useful as trace, but not yet strong enough to shape behavior
-- it has already waited one cycle but still lacks a clear target layer or contradiction-free evidence
+- the unresolved signal has already waited long enough and still does not justify promotion
 
 ## Hard Constraints
 
@@ -82,7 +87,6 @@ Keep evidence in `inbox/` when:
 - never silently delete evidence; archive it
 - every promotion, rejection, or archive should be explainable
 - age alone is not enough for promotion
-- keep `capture-memory` lightweight; own review and promotion here
 - keep one final winning route when routes compete
 - use reviewer or subagent cross-checks for promotion, rejection, archive, or conflict decisions
 - use a single-agent fast path only for low-risk cleanup with no meaningful judgment call

@@ -2,6 +2,15 @@
 
 Reusable path memory for the current scope.
 
+Use the index first, then read only the section relevant to the current task.
+
+## Index
+
+- `Core Workflow`: global execution style and validation routes
+- `Project-Specific Routes`: routes that only matter when the same project appears again
+
+## Core Workflow
+
 ## [LRN-20260408-001] narrow-first validation
 Intent: optimize
 Scope: repo
@@ -13,3 +22,7 @@ Evidence: OBS-20260406-002, OBS-20260407-001, OBS-20260408-001, AUDIT-20260408-0
 Fallback / Avoid: avoid using broad lint-first validation as the default when the changed area is already narrow and obvious
 Reviewer verdict: approved
 Rollback clue: revise or archive if repeated tasks stop benefiting from narrow-first validation
+
+## Project-Specific Routes
+
+- ...

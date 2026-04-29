@@ -22,9 +22,10 @@ The single automation should cover four responsibilities in one run:
 - merge duplicate evidence that supports the same route
 - move stale or losing routes into `ARCHIVE/`
 - preserve rollback context for reversions and superseded routes
-- keep `inbox/` as a short-lived staging buffer rather than a long-term candidate pool
-- review entries older than one automation cycle, which defaults to 6 hours in the active setup
-- auto-land only entries that are contradiction-free, source-backed, and already expressed in executable form
+- keep `inbox/` as a short-lived quarantine buffer only for inferred, ambiguous, or still-unresolved signal
+- immediately move any misplaced explicit strong signal out of `inbox/`
+- review inferred inbox items older than one automation cycle, which defaults to 6 hours in the active setup
+- auto-land only inferred items that are contradiction-free, source-backed, executable, and now have a clear destination
 - route hot temporary guidance into `ACTIVE.md`, stable reusable guidance into `LEARNINGS.md`, and archive noise or rejected evidence
 - never treat age alone as sufficient evidence for promotion
 
@@ -61,11 +62,11 @@ Read:
 
 ## Promotion Classifier
 
-Promote to `ACTIVE.md` when the item is hot, temporary, urgent, or phase-specific and should change behavior immediately.
+Write directly to `ACTIVE.md` when the signal is explicit, hot, temporary, urgent, or phase-specific and should change behavior immediately.
 
-Promote to `LEARNINGS.md` when the item is stable, reusable across tasks, and already written as an executable preference, route, capability choice, or failure pattern.
+Write directly to `LEARNINGS.md` when the signal is explicit, durable, reusable across tasks, and already written as an executable preference, route, capability choice, or failure pattern.
 
-Keep the item in `inbox/` for at most one additional cycle when it still lacks a contradiction check, a clear destination layer, or enough evidence.
+Keep the item in `inbox/` only when it is inferred, ambiguous, still competing, or still too weak to guide future behavior.
 
 Archive the item when it is noise, superseded, or useful only for lineage.
 
