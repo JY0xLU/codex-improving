@@ -1,19 +1,20 @@
 # Promotion Rules
 
-Use these rules when deciding whether a captured signal should stay raw, become a hot route in `ACTIVE.md`, graduate into `LEARNINGS.md` as reusable path memory, or be archived.
+Use these rules when deciding whether a signal should land immediately in `ACTIVE.md`, land immediately in `LEARNINGS.md`, stay quarantined in `inbox/`, or be archived.
 
 ## Minimum Bar
 
-Promote only when an item is:
+Record a signal only when it is:
 
 - source-backed
 - actionable as a route or rule
 - likely to improve the next task, not just describe the last one
 
-## Promote To `ACTIVE.md`
+## Direct-Land To `ACTIVE.md`
 
-Use `ACTIVE.md` for hot routes and hot rules when the item is:
+Write directly to `ACTIVE.md` when the signal is:
 
+- explicit
 - important right now
 - likely to affect the next few tasks immediately
 - temporary, phase-specific, or tied to a current platform or incident
@@ -24,11 +25,12 @@ Every `ACTIVE.md` item should include one of:
 - a removal condition
 - a superseding condition
 
-## Promote To `LEARNINGS.md`
+## Direct-Land To `LEARNINGS.md`
 
-Use `LEARNINGS.md` for route memory when the item is:
+Write directly to `LEARNINGS.md` when the signal is:
 
-- already validated as a winning path
+- explicit
+- already validated as a winning path or durable preference
 - reusable across tasks or sessions
 - specific enough to tell the next run what to try first
 - able to explain why the route wins and when it should be reused
@@ -45,11 +47,12 @@ A good `LEARNINGS.md` entry should capture:
 
 ## Keep In `inbox/`
 
-Keep the signal raw when it is:
+Keep the signal quarantined when it is:
 
+- inferred rather than directly stated
 - only seen once
 - still ambiguous
-- too weak to justify a route decision
+- still competing with another route
 - useful as evidence later, but not yet worth surfacing in `ACTIVE.md` or `LEARNINGS.md`
 
 ## Archive

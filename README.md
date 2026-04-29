@@ -62,6 +62,8 @@ If an item stops affecting near-term decisions, it should not stay here.
 
 `LEARNINGS.md` is the path memory layer.
 
+It uses progressive disclosure: start from the index, choose the relevant section, and only then read the specific route entries that match the task.
+
 Each learning is a route entry, not just a generic life lesson. A good entry answers:
 
 - what kind of task this route fits
@@ -77,7 +79,7 @@ This makes the system feel less like “memory storage” and more like “route
 
 The operating cycle is:
 
-`recall -> choose -> search if needed -> execute -> capture -> consolidate`
+`recall -> choose -> search if needed -> execute -> land or quarantine -> consolidate`
 
 In practice:
 
@@ -86,8 +88,8 @@ In practice:
 3. If confidence is not high enough, let `capability-evolution` search in order:
    enabled official plugins -> installable official plugins -> local skills -> trusted GitHub projects.
 4. Execute with one chosen route, not multiple competing routes.
-5. Use `capture-memory` to record only the high-signal result or blocker.
-6. Use `dream-consolidate` off-hours to keep `ACTIVE.md` hot, strengthen `LEARNINGS.md`, and archive stale paths.
+5. Use `capture-memory` to land explicit strong signal directly into `ACTIVE.md` or `LEARNINGS.md`, and only quarantine unresolved inferred signal in `inbox/`.
+6. Use `dream-consolidate` off-hours to keep `ACTIVE.md` hot, strengthen `LEARNINGS.md`, drain unresolved inbox items, and archive stale paths.
 
 The public model stays small even though the internal machinery is still auditable.
 
@@ -96,7 +98,7 @@ The public model stays small even though the internal machinery is still auditab
 This repo currently ships three main skills:
 
 - `capture-memory`
-  - lightweight event capture during active work
+  - direct landing for explicit strong signal, plus quarantine for unresolved inferred signal
 - `capability-evolution`
   - route discovery, validation, and capability selection
 - `dream-consolidate`
@@ -126,7 +128,7 @@ The system still keeps some internal machinery, but it should not become the mai
 Internal support mechanisms include:
 
 - `inbox/`
-  - append-only capture buffer for raw signal
+  - short-lived quarantine buffer only for unresolved inferred signal
 - `AUDIT_LOG.md`
   - minimal trail for promotion, rejection, archive, and rollback decisions
 - `ARCHIVE/`
@@ -165,8 +167,8 @@ If you want to install it manually:
 3. Merge the `AGENTS.md` snippet into your global or project entrypoint.
 4. During work, rely on `ACTIVE.md` first and `LEARNINGS.md` second.
 5. Use `capability-evolution` when you need to search for a better route.
-6. Use `capture-memory` only for high-signal results.
-7. Run the single recurring Dream Loop automation off-hours to refresh the hot layer, audit the current repo/PR state, check prompt drift, and recommend the next round.
+6. Use `capture-memory` to land explicit strong signal immediately and quarantine only unresolved inferred signal.
+7. Run the single recurring Dream Loop automation off-hours to refresh the hot layer, drain unresolved inbox items, audit the current repo/PR state, check prompt drift, and recommend the next round.
 
 ## What “Good” Looks Like
 
@@ -175,6 +177,7 @@ This repo is working well when:
 - the next task starts from an existing winning route instead of from zero
 - `ACTIVE.md` stays short and obviously current
 - `LEARNINGS.md` reads like a library of reusable routes, not a graveyard of vague rules
+- explicit corrections and durable preferences land quickly instead of sitting in `inbox/`
 - plugins and skills are discovered proactively when needed
 - rejected or stale paths are archived instead of silently disappearing
 - the system gets faster without becoming more confusing

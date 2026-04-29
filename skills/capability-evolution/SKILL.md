@@ -83,18 +83,18 @@ The report can be short, but it must make the change visible.
 4. validate the best candidate
 5. adopt or invoke the capability only if the validation clears
 6. finish the task work
-7. if the new capability produced a high-signal result, hand off the event to `capture-memory`
+7. if the new capability produced a strong explicit route win, preference, or correction, let `capture-memory` land it directly in `ACTIVE.md` or `LEARNINGS.md`; use inbox only if the signal is still inferred or unresolved
 
 ## Relationship To Other Skills
 
 - `capture-memory`
-  - use after the task when a high-signal outcome, blocker, preference, or workflow win should be recorded
+  - use after the task when an outcome, blocker, preference, or workflow win should be recorded in the right memory layer immediately
 - `dream-consolidate`
   - use later for off-hours candidate generation, promotion, rejection, archive, and audit work
 
 This skill sits before both:
 
-`discover -> validate -> adopt -> capture -> consolidate`
+`discover -> validate -> adopt -> land or quarantine -> consolidate`
 
 ## Hard Constraints
 

@@ -1,75 +1,91 @@
 ---
 name: capture-memory
-description: Use when active work produces a discrete event worth recording. Capture lightweight observations into inbox entries without consolidating or promoting long-term memory.
+description: Use when active work produces a memory-worthy signal. Direct-land explicit strong signal into ACTIVE.md or LEARNINGS.md when the destination is clear; use inbox only for unresolved inferred signal.
 ---
 
 # Capture Memory
 
 Use this skill during active work.
 
-Its job is to capture one event at a time, not to consolidate memory.
+Its job is to record signal in the right layer immediately, not to delay strong signal behind an unnecessary inbox hop.
 
 ## Use This Skill When
 
 - the user explicitly corrects a mistake
-- a command or workflow fails in a reusable way
-- a stable preference becomes clear
-- a repeatable workflow win appears
-- a capability gap keeps showing up
-- a task outcome, blocker, or decision should be remembered later
+- the user gives a durable directive or stable preference
+- a reusable workflow win becomes clear
+- a repeated failure pattern becomes clear
+- a capability gap keeps appearing
+- a task outcome, blocker, or route decision should be remembered later
 
 ## Do Not Use This Skill When
 
-- the user wants to reorganize memory files
-- the user wants to promote rules into long-term memory
 - the user wants a nightly review or cleanup pass
+- the user wants broad memory reorganization
 - the user wants to rewrite `AGENTS.md`
 
-## Output Target
+## Output Targets
 
-Write structured entries to the active inbox, usually `D:\CodexData\.codex\memory\inbox\`.
+Choose one target, not all of them.
 
-Prefer append-only daily files such as:
+### Direct-Land To `ACTIVE.md`
 
-- `D:\CodexData\.codex\memory\inbox\YYYY-MM-DD.md`
+Write directly to the active `ACTIVE.md` when the signal is:
 
-## Entry Format
+- explicit
+- source-backed
+- immediately behavior-changing
+- temporary, hot, phase-specific, or operational right now
 
-Each entry should include:
+### Direct-Land To `LEARNINGS.md`
 
-- id
-- timestamp
-- scope
-- source
-- type
-- summary
-- details
-- suggested action
-- tags
+Write directly to the active `LEARNINGS.md` when the signal is:
 
-## Capture Rules
+- explicit
+- durable
+- reusable across tasks or sessions
+- already clear enough to read like an executable preference, route, capability choice, or failure pattern
 
-- capture only non-obvious, reusable, or likely-to-recur signal
-- prefer short, high-information summaries
-- record the narrowest useful scope: `global`, `repo`, or `thread`
-- keep the entry event-oriented and lightweight
-- do not promote directly into `ACTIVE.md` or `LEARNINGS.md`
-- do not rewrite old inbox entries during active work
+### Use `inbox/` Only As A Quarantine Buffer
+
+Write to the active inbox only when the signal is:
+
+- inferred rather than directly stated
+- still ambiguous
+- still competing with another route
+- only seen once and not yet strong enough to guide future behavior
+- useful as evidence later, but not yet good enough for `ACTIVE.md` or `LEARNINGS.md`
+
+## Direct-Landing Rules
+
+- explicit user corrections should not wait in `inbox/` if the destination layer is already clear
+- explicit stable preferences should not wait in `inbox/` if they are durable and reusable
+- direct-land entries should stay short, source-backed, and executable
+- include source trace and promotion reason when writing to `ACTIVE.md` or `LEARNINGS.md`
+
+## Inbox Rules
+
+- keep inbox entries short and source-backed
+- use inbox for unresolved signal, not for already-decided memory
+- do not let inbox become a public third layer
+- do not rewrite old inbox entries during active work unless the current task is explicitly about maintenance
+
+## Hard Constraints
+
+- do not spray the same signal into multiple layers
+- do not invent durable learnings without traceable source
 - do not modify `AGENTS.md`
+- do not treat every one-off observation as memory-worthy
 
-## Examples
+## Good Examples
 
-Good captures:
+- a direct user correction that clearly changes future behavior
+- a durable Git or GitHub workflow preference
+- a stable route that has already proved better than the fallback
+- a failure pattern that should be avoided next time
 
-- a repeated failure pattern with a stable fix
-- a stable repo-specific validation order
-- a user preference the assistant should remember later
-- a repeated missing capability worth tracking
-- a scoped observation tied to a specific thread or repo task
+## Inbox Examples
 
-Bad captures:
-
-- casual chatter
-- trivial typos
-- one-off noise
-- vague feelings with no operational consequence
+- a possible route win that still needs another task to confirm
+- a weak pattern inferred from one run
+- a competing capability choice that has not clearly won yet
